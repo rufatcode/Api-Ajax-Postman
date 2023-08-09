@@ -7,21 +7,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/bootstrap.css">
    <link rel="stylesheet" href="./css/style.css">
-    <title>API_ajax-Postman</title>
+    <title>API-Ajax-Postman</title>
 </head>
 <body>
     <div id="watherForecast" class="container py-5">
         <form class=" d-flex justify-content-around w-50 m-auto mt-5">
-            <div class="mb-3 w-50">
-              <input placeholder="Search City" type="text" class="form-control" id="city" >
-             </div>
+            
+             <select id="citiesOption" class="form-select w-25 h-50" aria-label="Default select example">
+            <option value="">Select City</option>
+            </select>
              <select id="degreType" class="form-select w-25 h-50" aria-label="Default select example">
                 <option value="Celcium">Celcium</option>
                 <option value="Faranheight">Faranheight</option>
             </select>
             <button type="button" class="btn btn-primary h-25">Submit</button>
           </form>
-          <div class="w-50 m-auto text-danger">
+          <div class="w-50 m-auto text-danger mt-3 ">
             <h1 class="fs-5"></h1>
             <h2 class="fs-5"></h2>
             <p></p>

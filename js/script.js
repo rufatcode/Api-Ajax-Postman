@@ -5,10 +5,29 @@ $(document).ready(function(){
     let sky=$("#watherForecast span");
     let inputCity=$("#city");
     let inputType=$("#degreType");
+    let citiesOption=$("#citiesOption");
+    citiesOption.attr("class","form-select w-25 h-50");
+    $.ajax({
+        methood:"get",
+        url:`https://countriesnow.space/api/v0.1/countries/`,
+        success:function(datas){
+            datas.data.forEach(item=>{
+                item.cities.forEach(city=>{
+                    let option=$("<option>");
+                    option.html(city);
+                    option.attr("value",city);
+                    citiesOption.append(option);
+                })
+            })
+        },
+        error:function(error){
+            console.log(error);
+        }
+    })
     $("#watherForecast form button").click(function(){
         $.ajax({
             methood:"get",
-            url:`https://api.weatherapi.com/v1/current.json?key=6bc15cfb31414fbda9f95625221905&q=${inputCity.val()}`,
+            url:`https://api.weatherapi.com/v1/current.json?key=6bc15cfb31414fbda9f95625221905&q=${citiesOption.val()}`,
             success:function(data){
                 CityName.html("City:"+data.location.region);
                 CountryName.html("Country:"+data.location.country)
@@ -41,6 +60,7 @@ $(document).ready(function(){
                     else if (data.current.temp_f>70) {
                         sky.html("Sky Condition:"+'<i class="fa-solid fa-sun"></i>'+"Sun")
                     }
+                    
                 }
             },
             error:function(error){
@@ -68,6 +88,7 @@ $(document).ready(function(){
     })
     $("#prayerTimes .month").click(function(){
         tbody.html("");
+        
         let day=inputDate.val().split("-")[2];
         let month=inputDate.val().split("-")[1];
         let year=inputDate.val().split("-")[0];
